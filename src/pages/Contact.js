@@ -6,7 +6,8 @@ const { Title } = Typography;
 function Contact() {
   return (
     <Fragment>
-      <Title style={{ marginBottom: "30px" }}>Contact Page</Title>
+      <Title style={{ marginBottom: "30px" }}>Order Drinks Now</Title>
+      <a href="https://shopee.co.id/" target="_blank">Click Here</a>
       <Row gutter={20}>
         <Col span={6}></Col>
       </Row>

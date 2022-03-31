@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { Menu } from "antd";
-import { HomeOutlined, PhoneOutlined } from "@ant-design/icons";
+import {
+  HomeOutlined,
+  PhoneOutlined,
+  AppstoreOutlined,
+} from "@ant-design/icons";
 import { Link, withRouter } from "react-router-dom";
 
 function Navbar() {
   const [state, setState] = useState({ current: "home" });
 
   const handleClick = (e) => {
-    console.log("click ", e);
     setState({ current: e.key });
   };
 
@@ -15,7 +18,9 @@ function Navbar() {
 
   return (
     <div className="navbar-wrapper">
-      <h2>Logo</h2>
+      <Link to={"/"} style={{ width: "-webkit-fill-available" }}>
+        <h2>The Cocktail</h2>
+      </Link>
       <Menu
         onClick={handleClick}
         selectedKeys={[current]}
@@ -26,17 +31,17 @@ function Navbar() {
         <Menu.Item key="home" icon={<HomeOutlined />}>
           <Link to={"/"}>Home</Link>
         </Menu.Item>
-        <Menu.Item key="cat1" icon={<HomeOutlined />}>
-          <Link to={"/"}>Category 1</Link>
+        <Menu.Item key="cat1" icon={<AppstoreOutlined />}>
+          <Link to={"/category/Cocktail"}>Cocktail</Link>
         </Menu.Item>
-        <Menu.Item key="cat2" icon={<HomeOutlined />}>
-          <Link to={"/"}>Category 2</Link>
+        <Menu.Item key="cat2" icon={<AppstoreOutlined />}>
+          <Link to={"/category/Ordinary Drink"}>Ordinary Drink</Link>
         </Menu.Item>
-        <Menu.Item key="cat3" icon={<HomeOutlined />}>
-          <Link to={"/"}>Category 3</Link>
+        <Menu.Item key="cat3" icon={<AppstoreOutlined />}>
+          <Link to={"/category/Beer"}>Beer</Link>
         </Menu.Item>
         <Menu.Item key="contact" icon={<PhoneOutlined />}>
-          <Link to={"/contact"}>Contact</Link>
+          <Link to={"/contact"}>Order Now</Link>
         </Menu.Item>
       </Menu>
     </div>
