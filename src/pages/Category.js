@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { useParams } from "react-router-dom";
 import { Input, Card, Col, Row, Typography, Empty } from "antd";
 import { Link } from "react-router-dom";
 import { SearchOutlined } from "@ant-design/icons";
@@ -6,7 +7,9 @@ import { SearchOutlined } from "@ant-design/icons";
 const { Meta } = Card;
 const { Title } = Typography;
 
-function Home() {
+function Category() {
+  const { category } = useParams();
+  const pageTitle = category;
   const [state, setState] = React.useState({ post: [], notFound: false });
 
   function search(event) {
@@ -36,9 +39,12 @@ function Home() {
 
   function getAllDrinks() {
     try {
-      fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a")
+      fetch(
+        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`
+      )
         .then((response) => response.json())
         .then((result) => {
+          console.log(result);
           setState({ post: result.drinks });
         });
     } catch (error) {
@@ -48,8 +54,7 @@ function Home() {
 
   React.useEffect(() => {
     getAllDrinks();
-  }, []);
-
+  }, [category]);
   return (
     <Fragment>
       <Row
@@ -61,7 +66,7 @@ function Home() {
         }}
       >
         <Col>
-          <Title style={{ marginBottom: "0" }}>List all Drinks</Title>
+          <Title style={{ marginBottom: "0" }}>{pageTitle}</Title>
         </Col>
         <Col>
           <Input
@@ -97,4 +102,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Category;
