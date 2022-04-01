@@ -61,7 +61,7 @@ function Home() {
         }}
       >
         <Col>
-          <Title style={{ marginBottom: "0" }}>List all Drinks</Title>
+          <Title style={{ marginBottom: "0" }}>All Drinks</Title>
         </Col>
         <Col>
           <Input
