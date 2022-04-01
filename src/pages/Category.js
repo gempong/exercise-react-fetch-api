@@ -54,6 +54,7 @@ function Category() {
 
   React.useEffect(() => {
     getAllDrinks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category]);
   return (
     <Fragment>
